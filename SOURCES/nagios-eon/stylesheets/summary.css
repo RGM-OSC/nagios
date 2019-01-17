@@ -1,0 +1,22 @@
+.summary
+{ 
+font-family: verdana, tahoma, Arial, Helvetica, sans-serif;
+background-color: #FFFFFF;
+color: #3F3D3D;
+font-size: 8pt;
+}
+
+TD.reportDataOdd
+{
+padding: 1px;
+background-color: #E7E5DD;
+height: 22px;
+}
+
+TD.reportDataEven
+{
+padding: 1px;
+background-color: #DEDBD2;
+height: 22px;
+}
+

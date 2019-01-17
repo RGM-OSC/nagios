@@ -1,0 +1,211 @@
+BODY {
+border:0;
+margin:0;
+padding:0;
+margin-left:15px;
+margin-top:5px;
+margin-right:10px;
+}
+
+.status 
+{ 
+font-family: verdana, tahoma, Arial, Helvetica, sans-serif;
+background-color: #FFFFFF;
+color: #3F3D3D;
+font-size: 8pt;
+}
+
+DIV.hostTotals,DIV.serviceTotals,DIV.status
+{
+font-size: 8pt;
+font-weight: bold;
+margin-bottom: 2px;
+}
+
+
+TABLE.serviceTotals,TABLE.hostTotals
+{
+margin: 2px;
+text-align: center;
+background-color: #F0F1F5;
+border: 1px #E2DECD outset;
+width: 300px;
+background-repeat: repeat-x;
+}
+
+TH.hostTotals,TH.serviceTotals
+{
+font-weight: bold;
+padding-left: 5px;
+padding-right: 5px;
+padding-bottom: 0px;
+padding-top: 0px;
+height: 18px;
+border-right: 1px #E2DECD solid;
+font-style: normal;
+}
+
+TD.hostTotals,TD.serviceTotals
+{
+padding: 0px;
+padding-left: 2px;
+padding-right: 2px;
+height: 20px;
+}
+
+TD.hostTotalsUP,TD.serviceTotalsOK 
+{ 
+padding: 0px;
+padding-left: 2px;
+padding-right: 2px;
+background-repeat: no-repeat;
+background-position: center;
+height: 20px;
+}
+
+TD.hostTotalsDOWN,TD.hostTotalsUNREACHABLE,TD.serviceTotalsCRITICAL 
+{ 
+padding: 0px;
+padding-left: 2px;
+padding-right: 2px;
+background-repeat: no-repeat;
+background-position: center;
+height: 20px;
+}
+
+TD.hostTotalsPENDING,TD.serviceTotalsPENDING,TD.serviceTotalsUNKNOWN 
+{ 
+padding: 0px;
+padding-left: 2px;
+padding-right: 2px;
+background-repeat: no-repeat;
+background-position: center;
+height: 20px;
+}
+
+TD.hostTotalsPROBLEMS,TD.serviceTotalsPROBLEMS 
+{ 
+padding: 0px;
+padding-left: 2px;
+padding-right: 2px;
+background-repeat: no-repeat;
+background-position: center;
+height: 20px;
+}
+
+TD.hostTotalsPROBLEMS,TD.serviceTotalsWARNING 
+{ 
+padding: 0px;
+padding-left: 2px;
+padding-right: 2px;
+background-repeat: no-repeat;
+background-position: center;
+height: 20px;
+}
+
+
+A.hostTotals:hover,A.serviceTotals:hover
+{
+text-decoration: none;
+}
+
+
+TABLE.status
+{
+margin: 2px;
+background-color: #F0F1F5;
+border: 1px #E2DECD outset;
+width: 99%;
+}
+
+TH.status
+{
+text-align:left;
+padding: 0px;
+border: none;
+padding-left: 2px;
+padding-right: 2px;
+padding-bottom: 0px;
+padding-top: 0px;
+height: 20px;
+border-right: 1px #E2DECD solid;
+background-color: #F0F1F5;
+background-repeat: repeat-x;
+background-position: bottom;
+}
+
+TD.status
+{
+padding: 0px;
+}
+
+TD.statusOdd
+{
+padding: 1px;
+background-color: #E7E5DD;
+height: 22px;
+}
+
+TD.statusEven
+{
+padding: 1px;
+background-color: #DEDBD2;
+height: 22px;
+}
+
+TD.miniStatusUP,TD.miniStatusOK
+{
+padding: 2px;
+border: 2px #C0FFC0 dotted;
+font-weight: bold;
+text-align: center;
+background-color:#C0FFC0;
+}
+
+TD.miniStatusDOWN,TD.miniStatusUNREACHABLE,TD.miniStatusCRITICAL
+{
+padding: 2px;
+border: 2px #FFC0C0 dotted;
+font-weight: bold;
+text-align: center;
+background-color:#FFC0C0;
+}
+
+TD.miniStatusPENDING
+{
+padding: 2px;
+border: 2px #C0C0FF dotted;
+font-weight: bold;
+text-align: center;
+background-color:#8386FF;
+}
+
+TD.miniStatusWARNING
+{
+padding: 2px;
+border: 2px #FFFFC0 dotted;
+font-weight: bold;
+text-align: center;
+background-color:#FFFFC0;
+}
+
+TD.miniStatusUNKNOWN
+{
+padding: 0px;
+text-align: center;
+background-color:#FFC0C0;
+}
+
+.statusTitle
+{
+color: black;
+padding-top: 10px;
+padding-bottom: 2px;
+padding-left: 10px;
+margin-bottom: 10px;
+font-weight:bold;
+border-bottom: 1px solid #AAAAAA;
+text-transform:uppercase;
+font-size: 10px;
+background-color: white;
+}

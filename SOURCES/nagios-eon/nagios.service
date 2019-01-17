@@ -1,0 +1,18 @@
+[Unit]
+Description=Nagios Network Monitoring
+After=network.target
+Documentation=https://www.nagios.org/documentation/
+
+[Service]
+Type=forking
+User=nagios
+Group=eyesofnetwork
+EnvironmentFile=/etc/sysconfig/nagios
+ExecStartPre=/usr/bin/rm -f /srv/eyesofnetwork/nagios/var/log/rw/nagios.cmd
+ExecStartPre=/srv/eyesofnetwork/nagios/bin/nagios -v /srv/eyesofnetwork/nagios/etc/nagios.cfg
+ExecStart=/srv/eyesofnetwork/nagios/bin/nagios -d /srv/eyesofnetwork/nagios/etc/nagios.cfg
+ExecStopPost=/usr/bin/rm -f /srv/eyesofnetwork/nagios/var/log/rw/nagios.cmd
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
