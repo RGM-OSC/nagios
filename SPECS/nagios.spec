@@ -1,6 +1,6 @@
 %define name nagios
 %define version 3.5.1
-%define release 2.eon
+%define release 2.rgm
 %define nsusr nagios
 %define nsgrp eyesofnetwork
 %define wwwusr apache
