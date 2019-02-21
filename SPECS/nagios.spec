@@ -2,11 +2,11 @@
 %define version 3.5.1
 %define release 2.rgm
 %define nsusr nagios
-%define nsgrp eyesofnetwork
+%define nsgrp rgm
 %define wwwusr apache
 %define wwwgrp apache
 %define nnmmsg logger -t %{name}/rpm
-%define eon_path /srv/eyesofnetwork
+%define eon_path /srv/rgm
 %define eon_conf_path /srv/eyesofnetworkconf/%{name}
 %define eon_nagios_path %{eon_path}/%{name}-%{version}
 
