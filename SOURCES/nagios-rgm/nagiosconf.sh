@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # appliance group and use
-APPLIANCEGRP="eyesofnetwork"
+APPLIANCEGRP="rgm"
 
 # nagios paths
-eondir="/srv/eyesofnetwork"
-linkdir="${eondir}/nagios"
+rgmdir="/srv/rgm"
+linkdir="${rgmdir}/nagios"
 
 chown -R nagios:${APPLIANCEGRP} ${linkdir}*
 chmod 775 ${linkdir}/etc

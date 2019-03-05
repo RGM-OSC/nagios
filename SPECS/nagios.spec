@@ -1,14 +1,14 @@
 %define name nagios
 %define version 3.5.1
-%define release 2.rgm
+%define release 3.rgm
 %define nsusr nagios
 %define nsgrp rgm
 %define wwwusr apache
 %define wwwgrp apache
 %define nnmmsg logger -t %{name}/rpm
-%define eon_path /srv/rgm
-%define eon_conf_path /srv/eyesofnetworkconf/%{name}
-%define eon_nagios_path %{eon_path}/%{name}-%{version}
+%define rgm_path /srv/rgm
+%define rgm_conf_path /srv/rgmconf/%{name}
+%define rgm_nagios_path %{rgm_path}/%{name}-%{version}
 
 Summary: Host/service/network monitoring program
 Name: %{name}
@@ -18,7 +18,7 @@ License: GPL
 Group: Application/System
 Source0: %{name}-%{version}.tar.gz
 Source1: imagepak-base.tar.gz 
-Source2: %{name}-eon.tar.gz
+Source2: %{name}-rgm.tar.gz
 Patch0: 0001-do-not-copy-brokermodules.dif
 Patch1: 0003-remove-rrs-feed.dif
 Patch2: 0004-remove-updateversioninfo.dif
@@ -130,9 +130,9 @@ fi
 %post
 %systemd_post nagios.service
 
-# eyesofnetwork nagios symlink
-ln -nsf %{eon_nagios_path} %{eon_path}/%{name}
-chown -h nagios:eyesofnetwork %{eon_path}/%{name}
+# rgm nagios symlink
+ln -nsf %{rgm_nagios_path} %{rgm_path}/%{name}
+chown -h nagios:rgm %{rgm_path}/%{name}
 
 %post www
 # If apache is installed, and we can find the apache user, set a shell var
@@ -142,7 +142,7 @@ if [ "z" == "z$wwwusr" ]; then # otherwise, use the default
 fi
 # if apache user is not in nsgrp, add it
 if /usr/bin/id -Gn $wwwusr 2>/dev/null | /bin/grep -q %{nsgrp} > /dev/null 2>&1 ; then
-	: # $wwwusr (default: apache) is already in eyesofnetwork group
+	: # $wwwusr (default: apache) is already in rgm group
 else
 	# first find apache primary group
 	pgrp=`/usr/bin/id -gn $wwwusr 2>/dev/null`
@@ -169,14 +169,14 @@ CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" \
 	--with-lockfile=/var/run/nagios/nagios.pid \
 	--with-nagios-user=%{nsusr} \
 	--with-nagios-group=%{nsgrp} \
-	--prefix=%{eon_nagios_path} \
-	--exec-prefix=%{eon_nagios_path}/bin \
-	--bindir=%{eon_nagios_path}/bin \
-	--sbindir=%{eon_nagios_path}/sbin \
-	--libexecdir=%{eon_nagios_path}/plugins \
-	--datadir=%{eon_nagios_path}/share \
-	--sysconfdir=%{eon_nagios_path}/etc \
-	--localstatedir=%{eon_nagios_path}/var/log \
+	--prefix=%{rgm_nagios_path} \
+	--exec-prefix=%{rgm_nagios_path}/bin \
+	--bindir=%{rgm_nagios_path}/bin \
+	--sbindir=%{rgm_nagios_path}/sbin \
+	--libexecdir=%{rgm_nagios_path}/plugins \
+	--datadir=%{rgm_nagios_path}/share \
+	--sysconfdir=%{rgm_nagios_path}/etc \
+	--localstatedir=%{rgm_nagios_path}/var/log \
 	--with-file-perfdata \
 	--with-gd-lib=/usr/lib \
 	--with-gd-inc=/usr/include \
@@ -190,9 +190,9 @@ make
 cd eventhandlers
 for f in `find . -type f` ; do
 	F=`mktemp temp.XXXXXX`
-	sed "s=/usr/local/nagios/var/rw/=%{eon_nagios_path}/var/log/rw/=; \
-		s=/usr/local/nagios/libexec/eventhandlers/=%{eon_nagios_path}/plugins/eventhandlers=; \
-		s=/usr/local/nagios/test/var=%{eon_nagios_path}/var/log=" ${f} > ${F}
+	sed "s=/usr/local/nagios/var/rw/=%{rgm_nagios_path}/var/log/rw/=; \
+		s=/usr/local/nagios/libexec/eventhandlers/=%{rgm_nagios_path}/plugins/eventhandlers=; \
+		s=/usr/local/nagios/test/var=%{rgm_nagios_path}/var/log=" ${f} > ${F}
 	mv ${F} ${f}
 done
 cd ../..
@@ -200,12 +200,12 @@ cd ../..
 
 %install
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
-install -d -m 0775 ${RPM_BUILD_ROOT}%{eon_nagios_path}/var/log/spool/checkresults
-install -d -m 0775 ${RPM_BUILD_ROOT}%{eon_nagios_path}/var/log/rw
+install -d -m 0775 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/var/log/spool/checkresults
+install -d -m 0775 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/var/log/rw
 install -d -m 0755 ${RPM_BUILD_ROOT}/usr/include/nagios/
 install -d -m 0755 ${RPM_BUILD_ROOT}/etc/logrotate.d
 install -d -m 0755 ${RPM_BUILD_ROOT}/etc/httpd/conf.d
-install -d -m 0665 ${RPM_BUILD_ROOT}%{eon_nagios_path}/etc
+install -d -m 0665 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/etc
 install -d -m 0755 ${RPM_BUILD_ROOT}/var/run/nagios
 install -d -m 0755 ${RPM_BUILD_ROOT}%{_unitdir}
 install -d -m 0755 ${RPM_BUILD_ROOT}/usr/lib/tmpfiles.d/
@@ -219,29 +219,29 @@ install -m 0644 include/*.h ${RPM_BUILD_ROOT}/usr/include/nagios/
 
 # install CGIs
 cd contrib
-make INSTALL=install DESTDIR=${RPM_BUILD_ROOT} INSTALL_OPTS="" COMMAND_OPTS="" CGIDIR=%{eon_nagios_path}/sbin install
+make INSTALL=install DESTDIR=${RPM_BUILD_ROOT} INSTALL_OPTS="" COMMAND_OPTS="" CGIDIR=%{rgm_nagios_path}/sbin install
 cd ..
 
 # install event handlers
 cd contrib/eventhandlers
-install -d -m 0755 ${RPM_BUILD_ROOT}%{eon_nagios_path}/plugins/eventhandlers
+install -d -m 0755 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/plugins/eventhandlers
 for file in * ; do
-    test -f $file && install -m 0755 $file ${RPM_BUILD_ROOT}%{eon_nagios_path}/plugins/eventhandlers && rm -f $file
+    test -f $file && install -m 0755 $file ${RPM_BUILD_ROOT}%{rgm_nagios_path}/plugins/eventhandlers && rm -f $file
 done
 cd ../..
 
 # logos
 cd imagepak-base
-install -d -m0755 ${RPM_BUILD_ROOT}%{eon_nagios_path}/share/images/logos
-install -m0755 * ${RPM_BUILD_ROOT}%{eon_nagios_path}/share/images/logos
+install -d -m0755 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/logos
+install -m0755 * ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/logos
 
-# eon specifics
-cd ../%{name}-eon
-install -d -m0755 ${RPM_BUILD_ROOT}%{eon_conf_path}
-cp -afpvr ./* ${RPM_BUILD_ROOT}%{eon_conf_path}
-cp -aprf etc/* ${RPM_BUILD_ROOT}%{eon_nagios_path}/etc/
-install -m0664 stylesheets/* ${RPM_BUILD_ROOT}%{eon_nagios_path}/share/stylesheets/
-cp -aprf images/* ${RPM_BUILD_ROOT}%{eon_nagios_path}/share/images/
+# rgm specifics
+cd ../%{name}-rgm
+install -d -m0755 ${RPM_BUILD_ROOT}%{rgm_conf_path}
+cp -afpvr ./* ${RPM_BUILD_ROOT}%{rgm_conf_path}
+cp -aprf etc/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/etc/
+install -m0664 stylesheets/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/stylesheets/
+cp -aprf images/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/
 install -m0664 nagios.conf ${RPM_BUILD_ROOT}%{_sysconfdir}/httpd/conf.d/nagios.conf
 install -m0644 %{name}.service ${RPM_BUILD_ROOT}%{_unitdir}/%{name}.service
 install -m0644 %{name}.conf.tmpfiles ${RPM_BUILD_ROOT}/usr/lib/tmpfiles.d/%{name}.conf
@@ -253,39 +253,39 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%{eon_conf_path}
+%{rgm_conf_path}
 %attr(0644,root,root) %{_unitdir}/%{name}.service
 %attr(0644,root,root) %{_sysconfdir}/sysconfig/%{name}
 %defattr(644,root,root)
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf
 /usr/lib/tmpfiles.d/%{name}.conf
-%attr(664,%{nsusr},%{nsgrp}) %{eon_nagios_path}/etc/*
-%attr(664,%{nsusr},%{nsgrp}) %{eon_nagios_path}/etc/objects/*
+%attr(664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/*
+%attr(664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/objects/*
 %defattr(755,%{nsusr},%{nsgrp})
-%dir %{eon_nagios_path}
-%dir %{eon_nagios_path}/bin
+%dir %{rgm_nagios_path}
+%dir %{rgm_nagios_path}/bin
 %dir /var/run/nagios
-%attr(755,%{nsusr},%{nsgrp}) %{eon_nagios_path}/bin/*
-%dir %{eon_nagios_path}/sbin
-%dir %{eon_nagios_path}/share
-%dir %{eon_nagios_path}/plugins
-%dir %{eon_nagios_path}/plugins/eventhandlers
-%attr(755,%{nsusr},%{nsgrp}) %{eon_nagios_path}/plugins/eventhandlers/*
-%dir %{eon_nagios_path}/etc
-%dir %{eon_nagios_path}/etc/objects
-%dir %{eon_nagios_path}/var
-%dir %{eon_nagios_path}/var/log
-%dir %{eon_nagios_path}/var/log/archives
+%attr(755,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/bin/*
+%dir %{rgm_nagios_path}/sbin
+%dir %{rgm_nagios_path}/share
+%dir %{rgm_nagios_path}/plugins
+%dir %{rgm_nagios_path}/plugins/eventhandlers
+%attr(755,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/plugins/eventhandlers/*
+%dir %{rgm_nagios_path}/etc
+%dir %{rgm_nagios_path}/etc/objects
+%dir %{rgm_nagios_path}/var
+%dir %{rgm_nagios_path}/var/log
+%dir %{rgm_nagios_path}/var/log/archives
 %defattr(2775,%{nsusr},%{nsgrp})
-%dir %{eon_nagios_path}/var/log/rw
-%dir %{eon_nagios_path}/var/log/spool
-%dir %{eon_nagios_path}/var/log/spool/checkresults
+%dir %{rgm_nagios_path}/var/log/rw
+%dir %{rgm_nagios_path}/var/log/spool
+%dir %{rgm_nagios_path}/var/log/spool/checkresults
 %doc Changelog INSTALLING LICENSE README UPGRADING
 
 
 %files www
-%attr(755,%{nsusr},%{nsgrp}) %{eon_nagios_path}/sbin/*
-%attr(755,%{nsusr},%{nsgrp}) %{eon_nagios_path}/share/*
+%attr(755,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/sbin/*
+%attr(755,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/share/*
 %defattr(-,root,root)
 
 
@@ -296,6 +296,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Mar 05 2019 Michael Aubertin <maubertin@fr.scc.com> - 3.5.1-3.rgm
+- Initial fork
+
 * Thu Jan 19 2017 Jean-Philippe Levy <jeanphilippe.levy@gmail.com> - 3.5.1-2.eon
 - packaged for EyesOfNetwork appliance 5.1
 
