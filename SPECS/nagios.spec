@@ -1,14 +1,7 @@
 %define name nagios
 %define version 3.5.1
 %define release 3.rgm
-%define nsusr nagios
-%define nsgrp rgm
-%define wwwusr apache
-%define wwwgrp apache
 %define nnmmsg logger -t %{name}/rpm
-%define rgm_path /srv/rgm
-%define rgm_conf_path /srv/rgmconf/%{name}
-%define rgm_nagios_path %{rgm_path}/%{name}-%{version}
 
 Summary: Host/service/network monitoring program
 Name: %{name}
@@ -32,7 +25,17 @@ BuildRoot: %{_tmppath}/%{name}-buildroot
 Requires: gd > 1.8, zlib, libpng, libjpeg, bash, grep, mailx
 BuildRequires: gcc, gd-devel > 1.8, zlib-devel, libpng-devel, libjpeg-devel
 BuildRequires: systemd
+BuildRequires: rpm-macros-rgm
+
 Requires(pre,post): systemd
+
+%define nsusr %{rgm_user_nagios}
+%define nsgrp %{rgm_group}
+%define wwwusr %{rgm_user_httpd}
+%define wwwgrp %{rgm_user_httpd}
+
+#todo: remove
+%define rgm_nagios_path %{rgm_path}/%{name}-%{version}
 
 
 %description
@@ -237,8 +240,11 @@ install -m0755 * ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/logos
 
 # rgm specifics
 cd ../%{name}-rgm
-install -d -m0755 ${RPM_BUILD_ROOT}%{rgm_conf_path}
-cp -afpvr ./* ${RPM_BUILD_ROOT}%{rgm_conf_path}
+
+#todo: degage
+#install -d -m0755 ${RPM_BUILD_ROOT}%{rgm_conf_path}
+#cp -afpvr ./* ${RPM_BUILD_ROOT}%{rgm_conf_path}
+
 cp -aprf etc/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/etc/
 install -m0664 stylesheets/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/stylesheets/
 cp -aprf images/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/
@@ -253,11 +259,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%{rgm_conf_path}
 %attr(0644,root,root) %{_unitdir}/%{name}.service
 %attr(0644,root,root) %{_sysconfdir}/sysconfig/%{name}
 %defattr(644,root,root)
-%config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf
+%config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf	
 /usr/lib/tmpfiles.d/%{name}.conf
 %attr(664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/*
 %attr(664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/objects/*
@@ -296,6 +301,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Mar 21 2019 Eric Belhomme <ebelhomme@fr.scc.com> - 3.5.1-3.rgm
+- add rpm-macros-rgm as build dependency
+- fixed RGM paths
+
 * Tue Mar 05 2019 Michael Aubertin <maubertin@fr.scc.com> - 3.5.1-3.rgm
 - Initial fork
 
