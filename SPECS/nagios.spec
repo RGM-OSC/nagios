@@ -237,16 +237,14 @@ cd ../..
 cd imagepak-base
 install -d -m0755 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/logos
 install -m0755 * ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/logos
-
 # rgm specifics
 cd ../%{name}-rgm
-
 #todo: degage
 #install -d -m0755 ${RPM_BUILD_ROOT}%{rgm_conf_path}
 #cp -afpvr ./* ${RPM_BUILD_ROOT}%{rgm_conf_path}
-
 cp -aprf etc/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/etc/
-install -m0664 stylesheets/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/stylesheets/
+install -d -m0755 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/stylesheets
+install -m0664 stylesheets/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/stylesheets
 cp -aprf images/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/
 install -m0664 nagios.conf ${RPM_BUILD_ROOT}%{_sysconfdir}/httpd/conf.d/nagios.conf
 install -m0644 %{name}.service ${RPM_BUILD_ROOT}%{_unitdir}/%{name}.service
@@ -262,6 +260,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0644,root,root) %{_unitdir}/%{name}.service
 %attr(0644,root,root) %{_sysconfdir}/sysconfig/%{name}
 %defattr(0644,root,root)
+%{rgm_nagios_path}/share/images/logos/*
+%{rgm_nagios_path}/share/stylesheets/*
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf	
 /usr/lib/tmpfiles.d/%{name}.conf
 %attr(0664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/*
@@ -275,6 +275,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0755,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/bin/*
 %dir %{rgm_nagios_path}/sbin
 %dir %{rgm_nagios_path}/share
+%dir %{rgm_nagios_path}/share/images/logos
+%dir %{rgm_nagios_path}/share/stylesheets
 %dir %{rgm_nagios_path}/plugins
 %dir %{rgm_nagios_path}/plugins/eventhandlers
 %attr(755,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/plugins/eventhandlers/*
