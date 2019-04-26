@@ -260,6 +260,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(0644,apache,apache,0755)
 %dir %{rgm_nagios_path}/etc
 %dir %{rgm_nagios_path}/etc/objects
+#%attr(0664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/*
+#%attr(0664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/objects/*
+#%attr(0775,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/objects
+#%attr(0775,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc
 %defattr(0644,root,root)
 %attr(0644,root,root) %{_unitdir}/%{name}.service
 %attr(0644,root,root) %{_sysconfdir}/sysconfig/%{name}
@@ -267,10 +271,6 @@ rm -rf $RPM_BUILD_ROOT
 %{rgm_nagios_path}/share/stylesheets/*
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf	
 /usr/lib/tmpfiles.d/%{name}.conf
-%attr(0664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/*
-%attr(0664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/objects/*
-%attr(0775,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/objects
-%attr(0775,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc
 %defattr(755,%{nsusr},%{nsgrp})
 %dir %{rgm_nagios_path}
 %dir %{rgm_nagios_path}/bin
