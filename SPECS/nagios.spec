@@ -257,7 +257,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%defattr(0644,apache,apache,0755)
+%defattr(0664,%{nsusr},%{nsgrp},0775)
 %dir %{rgm_nagios_path}/etc
 %dir %{rgm_nagios_path}/etc/objects
 %{rgm_nagios_path}/etc/*
