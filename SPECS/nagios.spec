@@ -257,9 +257,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
+%defattr(0644,apache,apache,0755)
+%dir %{rgm_nagios_path}/etc
+%dir %{rgm_nagios_path}/etc/objects
+%defattr(0644,root,root)
 %attr(0644,root,root) %{_unitdir}/%{name}.service
 %attr(0644,root,root) %{_sysconfdir}/sysconfig/%{name}
-%defattr(0644,root,root)
 %{rgm_nagios_path}/share/images/logos/*
 %{rgm_nagios_path}/share/stylesheets/*
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf	
@@ -283,9 +286,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{rgm_nagios_path}/var
 %dir %{rgm_nagios_path}/var/log
 %dir %{rgm_nagios_path}/var/log/archives
-%defattr(0664,%{nsusr},apache,0775)
-%dir %{rgm_nagios_path}/etc
-%dir %{rgm_nagios_path}/etc/objects
 %defattr(2775,%{nsusr},%{nsgrp})
 %dir %{rgm_nagios_path}/var/log/rw
 %dir %{rgm_nagios_path}/var/log/spool
