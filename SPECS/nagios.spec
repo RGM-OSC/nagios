@@ -280,8 +280,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{rgm_nagios_path}/plugins
 %dir %{rgm_nagios_path}/plugins/eventhandlers
 %attr(755,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/plugins/eventhandlers/*
-%dir %{rgm_nagios_path}/etc
-%dir %{rgm_nagios_path}/etc/objects
+%attr(0664,%{nsusr},apache,0775) %dir %{rgm_nagios_path}/etc
+%attr(0664,%{nsusr},apache,0775) %dir %{rgm_nagios_path}/etc/objects
 %dir %{rgm_nagios_path}/var
 %dir %{rgm_nagios_path}/var/log
 %dir %{rgm_nagios_path}/var/log/archives
