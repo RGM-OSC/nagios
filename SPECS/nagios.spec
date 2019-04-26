@@ -260,6 +260,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(0644,apache,apache,0755)
 %dir %{rgm_nagios_path}/etc
 %dir %{rgm_nagios_path}/etc/objects
+%{rgm_nagios_path}/etc/*
+%{rgm_nagios_path}/etc/objects/*
 #%attr(0664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/*
 #%attr(0664,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/objects/*
 #%attr(0775,%{nsusr},%{nsgrp}) %{rgm_nagios_path}/etc/objects
