@@ -1,6 +1,6 @@
 %define name nagios
 %define version 3.5.1
-%define release 3.rgm
+%define release 4.rgm
 %define nnmmsg logger -t %{name}/rpm
 
 Summary: Host/service/network monitoring program
@@ -308,6 +308,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri May 29 2020 Michael Aubertin <maubertin@fr.scc.com> - 3.5.1-4.rgm
+- Add RGM logo
+
 * Thu Mar 21 2019 Eric Belhomme <ebelhomme@fr.scc.com> - 3.5.1-3.rgm
 - add rpm-macros-rgm as build dependency
 - fixed RGM paths
