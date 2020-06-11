@@ -1,6 +1,6 @@
 %define name nagios
 %define version 3.5.1
-%define release 4.rgm
+%define release 5.rgm
 %define nnmmsg logger -t %{name}/rpm
 
 Summary: Host/service/network monitoring program
@@ -308,6 +308,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jun 11 2020 Michael Aubertin <maubertin@fr.scc.com> - 3.5.1-5.rgm
+- Add 4ANY logo
+
 * Fri May 29 2020 Michael Aubertin <maubertin@fr.scc.com> - 3.5.1-4.rgm
 - Add RGM logo
 
