@@ -1,6 +1,6 @@
 %define name nagios
 %define version 3.5.1
-%define release 5.rgm
+%define release 6.rgm
 %define nnmmsg logger -t %{name}/rpm
 
 Summary: Host/service/network monitoring program
