@@ -308,6 +308,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jun 15 2020 Vincent Fricou <vincent@fricouv.eu> - 3.5.1-6.rgm
+- Add Extreme Network logo
+- Add Hirschmann logo
+
 * Fri Jun 11 2020 Michael Aubertin <maubertin@fr.scc.com> - 3.5.1-5.rgm
 - Add 4ANY logo
 
