@@ -1,6 +1,6 @@
 %define name nagios
 %define version 3.5.1
-%define release 5.rgm
+%define release 6.rgm
 %define nnmmsg logger -t %{name}/rpm
 
 Summary: Host/service/network monitoring program
@@ -308,6 +308,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Jun 15 2020 Vincent Fricou <vincent@fricouv.eu> - 3.5.1-6.rgm
+- Add logo Extreme Network and Hirshmann
+
 * Fri Jun 11 2020 Michael Aubertin <maubertin@fr.scc.com> - 3.5.1-5.rgm
 - Add 4ANY logo
 
