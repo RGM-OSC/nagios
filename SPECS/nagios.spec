@@ -308,6 +308,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jun 26 2020 Lucas Fueyo <lfueyo@fr.scc.com> - 3.5.1-7.rgm
+- Add aruba logo
+
 * Mon Jun 15 2020 Vincent Fricou <vincent@fricouv.eu> - 3.5.1-6.rgm
 - Add logo Extreme Network and Hirshmann
 
