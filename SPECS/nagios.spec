@@ -1,6 +1,6 @@
 %define name nagios
 %define version 3.5.1
-%define release 6.rgm
+%define release 7.rgm
 %define nnmmsg logger -t %{name}/rpm
 
 Summary: Host/service/network monitoring program
@@ -246,7 +246,7 @@ cp -aprf etc/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/etc/
 install -d -m0755 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/stylesheets
 install -m0664 stylesheets/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/stylesheets
 cp -aprf images/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/
-install -m0664 nagios.conf ${RPM_BUILD_ROOT}%{_sysconfdir}/httpd/conf.d/nagios.conf
+#install -m0664 nagios.conf ${RPM_BUILD_ROOT}%{_sysconfdir}/httpd/conf.d/nagios.conf
 install -m0644 %{name}.service ${RPM_BUILD_ROOT}%{_unitdir}/%{name}.service
 install -m0644 %{name}.conf.tmpfiles ${RPM_BUILD_ROOT}/usr/lib/tmpfiles.d/%{name}.conf
 install -m0644 %{name}.sysconfig ${RPM_BUILD_ROOT}/%{_sysconfdir}/sysconfig/%{name}
@@ -271,7 +271,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0644,root,root) %{_sysconfdir}/sysconfig/%{name}
 %{rgm_nagios_path}/share/images/logos/*
 %{rgm_nagios_path}/share/stylesheets/*
-%config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf	
+#%config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf	
 /usr/lib/tmpfiles.d/%{name}.conf
 %defattr(755,%{nsusr},%{nsgrp})
 %dir %{rgm_nagios_path}
@@ -308,7 +308,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Fri Jun 26 2020 Lucas Fueyo <lfueyo@fr.scc.com> - 3.5.1-7.rgm
+* Wed Mar 17 2021 Eric Belhomme <ebelhomme@fr.scc.com> - 3.5.1-7.rgm
+- remove apache config
 - Add aruba logo
 
 * Mon Jun 15 2020 Vincent Fricou <vincent@fricouv.eu> - 3.5.1-6.rgm
