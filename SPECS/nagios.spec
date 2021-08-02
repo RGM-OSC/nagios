@@ -1,6 +1,6 @@
 %define name nagios
 %define version 3.5.1
-%define release 7.rgm
+%define release 8.rgm
 %define nnmmsg logger -t %{name}/rpm
 
 Summary: Host/service/network monitoring program
@@ -250,6 +250,7 @@ cp -aprf images/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/
 install -m0644 %{name}.service ${RPM_BUILD_ROOT}%{_unitdir}/%{name}.service
 install -m0644 %{name}.conf.tmpfiles ${RPM_BUILD_ROOT}/usr/lib/tmpfiles.d/%{name}.conf
 install -m0644 %{name}.sysconfig ${RPM_BUILD_ROOT}/%{_sysconfdir}/sysconfig/%{name}
+install -m0754 rgm-nagios-archives.cron ${RPM_BUILD_ROOT}/%{_sysconfdir}/cron.daily/rgm-nagios-archives
 
 
 %clean
@@ -269,6 +270,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(0644,root,root)
 %attr(0644,root,root) %{_unitdir}/%{name}.service
 %attr(0644,root,root) %{_sysconfdir}/sysconfig/%{name}
+%attr(0754,root,root) %{_sysconfdir}/cron.daily/rgm-nagios-archives
 %{rgm_nagios_path}/share/images/logos/*
 %{rgm_nagios_path}/share/stylesheets/*
 #%config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf	
@@ -308,6 +310,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+
+* Mon Aug 2 2021 Eric Belhomme <ebelhomme@fr.scc.com> - 3.5.1-8.rgm
+- add rgm-nagios-archives cron job
+
 * Wed Mar 17 2021 Eric Belhomme <ebelhomme@fr.scc.com> - 3.5.1-7.rgm
 - remove apache config
 - Add aruba logo

@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# move Nagios performance data logs older than 90 days to a "legacy"
+# archive directory to avoid re-injection to thruk log_cache SQL table
+#
+# Copyright 2021 & onwards, RGM - SCC France
+
+if [ ! -d /srv/rgm/nagios/var/log/archives-legacy ]; then
+    mkdir -p /srv/rgm/nagios/var/log/archives-legacy
+    chown nagios:rgm /srv/rgm/nagios/var/log/archives-legacy
+    chmod 0750 /srv/rgm/nagios/var/log/archives-legacy
+fi
+find /srv/rgm/nagios/var/log/archives/ -type f -name '*.log' -ctime +90 -exec gzip {} \;
+mv /srv/rgm/nagios/var/log/archives/*.gz /srv/rgm/nagios/var/log/archives-legacy/
