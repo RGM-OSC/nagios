@@ -205,14 +205,15 @@ cd ../..
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
 install -d -m 0775 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/var/log/spool/checkresults
 install -d -m 0775 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/var/log/rw
-install -d -m 0755 ${RPM_BUILD_ROOT}/usr/include/nagios/
+install -d -m 0755 ${RPM_BUILD_ROOT}/usr/include/nagios
 install -d -m 0755 ${RPM_BUILD_ROOT}/etc/logrotate.d
 install -d -m 0755 ${RPM_BUILD_ROOT}/etc/httpd/conf.d
 install -d -m 0665 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/etc
 install -d -m 0755 ${RPM_BUILD_ROOT}/var/run/nagios
 install -d -m 0755 ${RPM_BUILD_ROOT}%{_unitdir}
-install -d -m 0755 ${RPM_BUILD_ROOT}/usr/lib/tmpfiles.d/
-install -d -m 0755 ${RPM_BUILD_ROOT}/etc/sysconfig/
+install -d -m 0755 ${RPM_BUILD_ROOT}/usr/lib/tmpfiles.d
+install -d -m 0755 ${RPM_BUILD_ROOT}/etc/sysconfig
+install -d -m 0755 ${RPM_BUILD_ROOT}/etc/cron.daily
 
 make DESTDIR=${RPM_BUILD_ROOT} INSTALL_OPTS="" COMMAND_OPTS="" install
 make DESTDIR=${RPM_BUILD_ROOT} INSTALL_OPTS="" COMMAND_OPTS="" INIT_OPTS="" 
@@ -249,8 +250,8 @@ cp -aprf images/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/
 #install -m0664 nagios.conf ${RPM_BUILD_ROOT}%{_sysconfdir}/httpd/conf.d/nagios.conf
 install -m0644 %{name}.service ${RPM_BUILD_ROOT}%{_unitdir}/%{name}.service
 install -m0644 %{name}.conf.tmpfiles ${RPM_BUILD_ROOT}/usr/lib/tmpfiles.d/%{name}.conf
-install -m0644 %{name}.sysconfig ${RPM_BUILD_ROOT}/%{_sysconfdir}/sysconfig/%{name}
-install -m0754 rgm-nagios-archives.cron ${RPM_BUILD_ROOT}/%{_sysconfdir}/cron.daily/rgm-nagios-archives
+install -m0644 %{name}.sysconfig ${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig/%{name}
+install -m0754 rgm-nagios-archives.cron ${RPM_BUILD_ROOT}%{_sysconfdir}/cron.daily/rgm-nagios-archives
 
 
 %clean
