@@ -1,6 +1,6 @@
 %define name nagios
 %define version 3.5.1
-%define release 8.rgm
+%define release 9.rgm
 %define nnmmsg logger -t %{name}/rpm
 
 Summary: Host/service/network monitoring program
@@ -311,6 +311,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+
+* Wed Jul 6 2022 Christophe Cassan <ccassan@fr.scc.com> - 3.5.1-9.rgm
+- add Azure logo
 
 * Mon Aug 2 2021 Eric Belhomme <ebelhomme@fr.scc.com> - 3.5.1-8.rgm
 - add rgm-nagios-archives cron job
