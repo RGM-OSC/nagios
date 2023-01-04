@@ -1,6 +1,6 @@
 %define name nagios
 %define version 3.5.1
-%define release 9.rgm
+%define release 10.rgm
 %define nnmmsg logger -t %{name}/rpm
 
 Summary: Host/service/network monitoring program
@@ -246,7 +246,8 @@ cd ../%{name}-rgm
 cp -aprf etc/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/etc/
 install -d -m0755 ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/stylesheets
 install -m0664 stylesheets/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/stylesheets
-cp -aprf images/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/
+#cp -aprf images/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/
+install -m0644 images/* ${RPM_BUILD_ROOT}%{rgm_nagios_path}/share/images/logos
 #install -m0664 nagios.conf ${RPM_BUILD_ROOT}%{_sysconfdir}/httpd/conf.d/nagios.conf
 install -m0644 %{name}.service ${RPM_BUILD_ROOT}%{_unitdir}/%{name}.service
 install -m0644 %{name}.conf.tmpfiles ${RPM_BUILD_ROOT}/usr/lib/tmpfiles.d/%{name}.conf
@@ -311,6 +312,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+
+* Wed Jan 4 2023 Eric Belhomme <ebelhomme@fr.scc.com> - 3.5.1-10.rgm
+- remove duplicate logo pictures
+- add official kubernetes logos from https://github.com/kubernetes/community
+- add few CNCF logos
+- add teleport, hashicorp, jenkins, argo, git, gitea, gitlab, harbor logos
 
 * Wed Jul 6 2022 Christophe Cassan <ccassan@fr.scc.com> - 3.5.1-9.rgm
 - add Azure logo

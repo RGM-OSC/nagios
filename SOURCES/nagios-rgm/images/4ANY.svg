@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.83 127.83">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: .5px;
+      }
+
+      .cls-3 {
+        fill: #3fa9f5;
+      }
+
+      .cls-4 {
+        font-family: Verdana-Bold, Verdana;
+        font-size: 9.05px;
+        font-weight: 700;
+      }
+
+      .cls-5 {
+        fill: #009ee2;
+      }
+    </style>
+  </defs>
+  <g id="fond">
+    <circle class="cls-2" cx="63.92" cy="63.92" r="63"/>
+    <circle cx="63.92" cy="63.92" r="58"/>
+  </g>
+  <g id="logo_4any">
+    <path class="cls-5" d="m63.1,62.3c-10.95,11.29-22.09,21.25-37.35,26.78,5.77-26.27,20.87-49.26,35.7-71.18-3.03,11.7-7.31,24.27-10.33,35.94,5.81.88,9.05,4.29,11.98,8.47Z"/>
+    <path class="cls-5" d="m64.59,66.06c4.09-6.4,9.41-10.67,16.91-12.58,7.11,11.49,12.45,23.93,17.58,36.61-10.57-9.45-20.16-19.97-34.49-24.03Z"/>
+    <path class="cls-5" d="m65.14,60.86c-2.8-1.54-4.79-3.63-6.74-6.66,20.67-6.74,39.98-23.39,40.15-23.25-.97,1.42-6.38,12.29-33.41,29.91Z"/>
+    <path class="cls-1" d="m62.83,17.89c5.73,7.7,9.02,15.93,12.7,25.05-3.46,3.31-7.1,5.43-12.87,6.36,1.4-10.39,1.25-19.31.17-31.41Z"/>
+  </g>
+  <g id="logo_scc">
+    <path class="cls-1" d="m51.48,100.88l3.13-7.65s-3.01,3.99-12.11,7.84c0,0,8.35-2.59,8.98-.2Z"/>
+  </g>
+  <g id="Calque_5" data-name="Calque 5">
+    <text class="cls-4" transform="translate(55.05 100.24) scale(.8 1)"><tspan class="cls-3" x="0" y="0">4</tspan><tspan class="cls-1" x="6.44" y="0">ANY</tspan></text>
+  </g>
+</svg>

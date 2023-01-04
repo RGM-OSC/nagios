@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126.22 126.22">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: .5px;
+      }
+    </style>
+  </defs>
+  <g id="fond">
+    <polygon class="cls-2" points="63.11 123.93 2.6 2.29 123.62 2.29 63.11 123.93"/>
+  </g>
+  <g id="pad">
+    <rect class="cls-1" x="49.02" y="26.34" width="7.29" height="7.29"/>
+    <rect class="cls-1" x="59.52" y="26.34" width="7.29" height="7.29"/>
+    <rect class="cls-1" x="69.8" y="26.34" width="7.29" height="7.29"/>
+    <rect class="cls-1" x="49.13" y="36.78" width="7.29" height="7.29"/>
+    <rect class="cls-1" x="59.62" y="36.78" width="7.29" height="7.29"/>
+    <rect class="cls-1" x="69.91" y="36.78" width="7.29" height="7.29"/>
+    <rect class="cls-1" x="49.13" y="47.21" width="7.29" height="7.29"/>
+    <rect class="cls-1" x="59.62" y="47.21" width="7.29" height="7.29"/>
+    <rect class="cls-1" x="69.91" y="47.21" width="7.29" height="7.29"/>
+    <rect class="cls-1" x="59.62" y="57.64" width="7.29" height="7.29"/>
+  </g>
+</svg>

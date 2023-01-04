@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 139.42">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #c00;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke-width: 10px;
+      }
+
+      .cls-4, .cls-3 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        stroke-width: 9px;
+      }
+    </style>
+  </defs>
+  <g id="fond">
+    <rect class="cls-2" width="144" height="139.42"/>
+  </g>
+  <g id="Calque_3" data-name="Calque 3">
+    <rect class="cls-1" x="39.54" y="42.1" width="64.96" height="9.16"/>
+    <rect class="cls-1" x="67.51" y="30.34" width="8.99" height="15.77"/>
+    <rect class="cls-1" x="41.15" y="88.16" width="64.96" height="9.16"/>
+    <circle class="cls-3" cx="72" cy="69.71" r="22.89"/>
+    <circle class="cls-1" cx="72" cy="69.71" r="9.23"/>
+    <circle class="cls-4" cx="72" cy="69.71" r="41.04"/>
+    <path class="cls-1" d="m72.02,15.14s-2.71,7.92-9.19,9.44l18.59.07c-7.66-1.91-9.4-9.52-9.4-9.52Z"/>
+    <path class="cls-1" d="m17.46,69.82s7.92,2.71,9.44,9.19l.07-18.59c-1.91,7.66-9.52,9.4-9.52,9.4Z"/>
+    <path class="cls-1" d="m72.24,124.28s2.71-7.99,9.19-9.52l-18.59.07c7.66,1.91,9.4,9.45,9.4,9.45Z"/>
+    <path class="cls-1" d="m126.57,69.66s-7.99-2.71-9.52-9.19l.07,18.59c1.91-7.66,9.45-9.4,9.45-9.4Z"/>
+  </g>
+</svg>

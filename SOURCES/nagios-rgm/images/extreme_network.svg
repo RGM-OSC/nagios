@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #57297f;
+      }
+
+      .cls-3 {
+        letter-spacing: .01em;
+      }
+
+      .cls-2 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-size: 48px;
+      }
+
+      .cls-4 {
+        letter-spacing: -.01em;
+      }
+    </style>
+  </defs>
+  <g id="logo">
+    <rect class="cls-1" x="9.89" y="103.78" width="45.12" height="11.87"/>
+    <polygon class="cls-1" points="21.08 133.89 21.08 103.78 9.36 103.78 9.36 140.25 21.08 133.89"/>
+    <polygon class="cls-1" points="17.26 152.21 54.67 152.21 54.67 140.25 9.36 140.25 17.26 152.21"/>
+    <rect class="cls-1" x="27.36" y="122.06" width="21.54" height="11.87"/>
+  </g>
+  <g id="txt">
+    <text class="cls-2" transform="translate(70.09 144.09)"><tspan x="0" y="0">E</tspan><tspan class="cls-3" x="23.62" y="0">x</tspan><tspan x="46.46" y="0">t</tspan><tspan class="cls-4" x="62.35" y="0">r</tspan><tspan x="77.57" y="0">eme</tspan></text>
+  </g>
+</svg>
