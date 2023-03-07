@@ -22,7 +22,7 @@ Patch6: 0008-fix-encoding-after-2-reloads.dif
 Patch7: 0009-Corrected-comparison-operator-in-service-freshness-c.dif
 Patch8: 0010-Fixed-bug-445-Adding-triggered-downtime-for-child-ho.dif
 BuildRoot: %{_tmppath}/%{name}-buildroot
-Requires: gd > 1.8, zlib, libpng, libjpeg, bash, grep, mailx
+Requires: gd > 1.8, zlib, libpng, libjpeg, bash, grep, s-nail
 BuildRequires: gcc, gd-devel > 1.8, zlib-devel, libpng-devel, libjpeg-devel
 BuildRequires: systemd
 BuildRequires: rpm-macros-rgm
