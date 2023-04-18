@@ -1,12 +1,9 @@
-%define name nagios
-%define version 3.5.1
-%define release 10.rgm
 %define nnmmsg logger -t %{name}/rpm
 
 Summary: Host/service/network monitoring program
-Name: %{name}
-Version: %{version}
-Release: %{release}
+Name: nagios
+Version: 3.5.1
+Release: 10.rgm
 License: GPL
 Group: Application/System
 Source0: %{name}-%{version}.tar.gz
