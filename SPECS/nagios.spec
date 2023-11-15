@@ -3,11 +3,11 @@
 Summary: Host/service/network monitoring program
 Name: nagios
 Version: 3.5.1
-Release: 10.rgm
+Release: 11.rgm
 License: GPL
 Group: Application/System
 Source0: %{name}-%{version}.tar.gz
-Source1: imagepak-base.tar.gz 
+Source1: imagepak-base.tar.gz
 Source2: %{name}-rgm.tar.gz
 Patch0: 0001-do-not-copy-brokermodules.dif
 Patch1: 0003-remove-rrs-feed.dif
@@ -113,12 +113,12 @@ else
 	/usr/sbin/useradd -d /home/%{name} -s /bin/bash -c "%{nsusr}" -g "%{nsgrp}" %{nsusr} || \
 		%nnmmsg Unexpected error adding user "%{nsusr}". Aborting install process.
 fi
- 
+
 %preun
 %systemd_preun nagios.service
 
 %postun
-%systemd_postun_with_restart nagios.service 
+%systemd_postun_with_restart nagios.service
 
 # Delete nagios user and group
 # (if grep doesn't find a match, then it is NIS or LDAP served and cannot be deleted)
@@ -213,7 +213,7 @@ install -d -m 0755 ${RPM_BUILD_ROOT}/etc/sysconfig
 install -d -m 0755 ${RPM_BUILD_ROOT}/etc/cron.daily
 
 make DESTDIR=${RPM_BUILD_ROOT} INSTALL_OPTS="" COMMAND_OPTS="" install
-make DESTDIR=${RPM_BUILD_ROOT} INSTALL_OPTS="" COMMAND_OPTS="" INIT_OPTS="" 
+make DESTDIR=${RPM_BUILD_ROOT} INSTALL_OPTS="" COMMAND_OPTS="" INIT_OPTS=""
 
 # install headers for development package
 install -m 0644 include/*.h ${RPM_BUILD_ROOT}/usr/include/nagios/
@@ -272,7 +272,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0754,root,root) %{_sysconfdir}/cron.daily/rgm-nagios-archives
 %{rgm_nagios_path}/share/images/logos/*
 %{rgm_nagios_path}/share/stylesheets/*
-#%config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf	
+#%config(noreplace) %{_sysconfdir}/httpd/conf.d/nagios.conf
 /usr/lib/tmpfiles.d/%{name}.conf
 %defattr(755,%{nsusr},%{nsgrp})
 %dir %{rgm_nagios_path}
@@ -309,6 +309,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 15 2023 Vincent Fricou <vfricou@fr.scc.com> - 3.5.1-11.rgm
+- add scality logo
 
 * Wed Jan 4 2023 Eric Belhomme <ebelhomme@fr.scc.com> - 3.5.1-10.rgm
 - remove duplicate logo pictures
@@ -382,13 +384,13 @@ rm -rf $RPM_BUILD_ROOT
 - upgrade to version 3.2.0
 
 * Fri Jul 24 2009 Jean-Philippe Levy <jeanphilippe.levy@gmail.com> - 3.1.2-0.eon
-- upgrade to version 3.1.2 
+- upgrade to version 3.1.2
 
 * Thu May 14 2009 Jean-Philippe Levy <jeanphilippe.levy@gmail.com> - 3.1.0-0.eon
 - packaged for EyesOfNetwork appliance 2.0
 
 * Mon Apr 13 2009 Jean-Philippe Levy <jeanphilippe.levy@gmail.com> - 3.0.6-1.eon
-- packaged for EyesOfNetwork appliance 2.0 
+- packaged for EyesOfNetwork appliance 2.0
 - stylesheets modifications
 
 * Tue Dec 02 2008 Jean-Philippe Levy <jeanphilippe.levy@gmail.com> - 3.0.6-0.eon
